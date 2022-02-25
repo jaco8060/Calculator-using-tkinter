@@ -14,8 +14,12 @@ e.grid(row=0,column=0, columnspan=3, padx= 10, pady = 10) # column span is to sp
 def button_click(number):
     # e.delete(0,END) # delete whats already in the box
     current = e.get()
-    e.delete(0, END)
-    e.insert(0,str(current) + str(number))  # insert new number
+    if (str(current) == "ERROR"): #delete ERROR when pressing a button then insert new number
+        e.delete(0, END)
+        e.insert(0,str(number))
+    else: #if no error add number to number string
+        e.delete(0, END)
+        e.insert(0,str(current) + str(number))  # insert new number
 
     return
 
@@ -71,10 +75,17 @@ def button_backspace():
     return
 
 def button_equal():
+
     current = e.get()
-    equals = eval(str(current)) #let python evaluate the string
-    e.delete(0,END) #clear whats in the box
-    e.insert(0,equals)
+    try:
+        equals = eval(str(current)) #let python evaluate the string
+    except BaseException: # any error print out 'ERROR'
+        e.delete(0,END) #clear whats in the box
+        e.insert(0,str("ERROR"))
+    else:
+
+        e.delete(0,END) #clear whats in the box
+        e.insert(0,equals) #insert answer
     return 
 
 # to pass numbers in buttons in functions we use lambda
