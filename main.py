@@ -63,11 +63,12 @@ def button_decimal():
     e.delete(0, END)
     e.insert(0,first_number + str("."))  # insert new number
     return
-# def button_prev():
-#     first_number = e.get()
-#     e.delete(0, END)
-#     e.insert(0,first_number + str(first_number))  # insert new number
-#     return
+def button_backspace():
+    current = e.get()
+    temp = str(current)[:-1] # slice string to remove last letter
+    e.delete(0, END) #replace old string with sliced string
+    e.insert(0,temp)  # insert new number
+    return
 
 def button_equal():
     current = e.get()
@@ -98,7 +99,7 @@ button_percent = Button(root, text= "%", font ="Calibri 16 bold",padx=40, pady =
 button_bracket1 =  Button(root, text= "(", font ="Calibri 16 bold",padx=40, pady = 20, command= button_bracket1)
 button_bracket2 =  Button(root, text= ")", font ="Calibri 16 bold",padx=40, pady = 20, command= button_bracket2)
 button_decimal = Button(root, text= ".", font ="Calibri 16 bold",padx=40, pady = 20, command= button_decimal)
-# button_prev_entry = Button(root, text= "Prev", font ="Calibri 16 bold",padx=40, pady = 20, command= button_prev)
+button_backspace = Button(root, text= "Del", font ="Calibri 16 bold",padx=40, pady = 20, command= button_backspace)
 
 # put buttons on the screen//use sticky to remove gap between buttons
 
@@ -123,7 +124,7 @@ button_add.grid(row=6,column=0, sticky="nsew")
 button_multiply.grid(row=6,column=1, sticky="nsew")
 button_divide.grid(row=6,column=2, sticky="nsew")
 button_subtract.grid(row=7,column=0, sticky="nsew")
-# button_prev_entry.grid(row=7,column=1, sticky="nsew")
+button_backspace.grid(row=7,column=1, sticky="nsew")
 button_percent.grid(row=7,column=2, sticky="nsew")
 
 button_clear.grid(row=8,column=0,columnspan=3, sticky="nsew")
