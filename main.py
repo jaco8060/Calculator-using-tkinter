@@ -66,7 +66,7 @@ class calculator:
 
         button_clear.grid(row=8,column=0,columnspan=3, sticky="nsew")
     def callback(self, P):
-        if str.isdigit(P) or P == "" or "%" in P or "*" in P or "(" in P or ")" in P or "/" in P or "-" in P or "." in P or "ERROR" in P or "\n" in P:
+        if str.isdigit(P) or P == "" or "%" in P or "*" in P or "(" in P or ")" in P or "/" in P or "-" in P or "." in P or "ERROR" in P or "+" in P or "\n" in P:
             return True
         else:
             return False
